@@ -33,8 +33,8 @@ resource "tls_self_signed_cert" "ca" {
 resource "tls_private_key" "certificate" {
   for_each    = var.certificates
   algorithm   = lookup(each.value, "algorithm", "ECDSA")
-  ecdsa_curve = lookup(each.value, "algorithm", "ECDSA") == "ECDSA" ? each.key.ecdsa_curve : null
-  rsa_bits    = lookup(each.value, "algorithm", "ECDSA") == "RSA" ? each.key.rsa_bits : null
+  ecdsa_curve = lookup(each.value, "algorithm", "ECDSA") == "ECDSA" ? lookup(each.value, "ecdsa_curve", "P384") : null
+  rsa_bits    = lookup(each.value, "algorithm", "ECDSA") == "RSA" ? lookup(each.value, "rsa_bits", 4096) : null
 }
 
 resource "tls_cert_request" "certificate" {
@@ -43,7 +43,7 @@ resource "tls_cert_request" "certificate" {
   private_key_pem = tls_private_key.certificate[each.key].private_key_pem
 
   subject {
-    common_name         = lookup(each.value.subject, "common_name", each.key)
+    common_name         = lookup(each.value.subject, "common_name", null)
     organization        = lookup(each.value.subject, "organization", null)
     organizational_unit = lookup(each.value.subject, "organizational_unit", null)
     street_address      = lookup(each.value.subject, "street_address", null)
@@ -59,7 +59,7 @@ resource "tls_cert_request" "certificate" {
   uris         = lookup(each.value, "uris", [])
 }
 
-resource "tls_locally_signed_cert" "certificates" {
+resource "tls_locally_signed_cert" "certificate" {
   for_each           = var.certificates
   cert_request_pem   = tls_cert_request.certificate[each.key].cert_request_pem
   ca_key_algorithm   = tls_private_key.ca.algorithm
