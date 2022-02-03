@@ -43,7 +43,7 @@ resource "tls_cert_request" "certificate" {
   private_key_pem = tls_private_key.certificate[each.key].private_key_pem
 
   subject {
-    common_name         = lookup(each.value.subject, "common_name", null)
+    common_name         = lookup(each.value.subject, "common_name", each.key)
     organization        = lookup(each.value.subject, "organization", null)
     organizational_unit = lookup(each.value.subject, "organizational_unit", null)
     street_address      = lookup(each.value.subject, "street_address", null)
