@@ -13,7 +13,12 @@ variable "ca" {
     }
     allowed_uses = [
       "cert_signing",
-      "crl_signing"
+      "crl_signing",
+      "code_signing",
+      "server_auth",
+      "client_auth",
+      "digital_signature",
+      "key_encipherment",
     ]
   }
 }

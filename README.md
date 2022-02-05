@@ -38,7 +38,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_ca"></a> [ca](#input\_ca) | n/a | `any` | <pre>{<br>  "algorithm": "ECDSA",<br>  "allowed_uses": [<br>    "cert_signing",<br>    "crl_signing"<br>  ],<br>  "early_renewal_hours": 78840,<br>  "ecdsa_curve": "P384",<br>  "rsa_bits": 4096,<br>  "subject": {<br>    "common_name": "certificate-authority"<br>  },<br>  "validity_period_hours": 87600<br>}</pre> | no |
+| <a name="input_ca"></a> [ca](#input\_ca) | n/a | `any` | <pre>{<br>  "algorithm": "ECDSA",<br>  "allowed_uses": [<br>    "cert_signing",<br>    "crl_signing",<br>    "code_signing",<br>    "server_auth",<br>    "client_auth",<br>    "digital_signature",<br>    "key_encipherment"<br>  ],<br>  "early_renewal_hours": 78840,<br>  "ecdsa_curve": "P384",<br>  "rsa_bits": 4096,<br>  "subject": {<br>    "common_name": "certificate-authority"<br>  },<br>  "validity_period_hours": 87600<br>}</pre> | no |
 | <a name="input_certificates"></a> [certificates](#input\_certificates) | n/a | `any` | `{}` | no |
 
 ## Outputs
