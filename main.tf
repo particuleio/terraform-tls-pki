@@ -71,3 +71,16 @@ resource "tls_locally_signed_cert" "certificate" {
 
   allowed_uses = lookup(each.value, "allowed_uses", [])
 }
+
+resource "pkcs12_from_pem" "certificate" {
+  for_each        = var.certificates
+  password        = random_password.certificate[each.key].result
+  cert_pem        = tls_locally_signed_cert.certificate[each.key].cert_pem
+  private_key_pem = tls_private_key.certificate[each.key].private_key_pem
+  ca_pem          = tls_self_signed_cert.ca.cert_pem
+}
+
+resource "random_password" "certificate" {
+  for_each = var.certificates
+  length   = 32
+}

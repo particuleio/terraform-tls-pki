@@ -12,12 +12,16 @@ Repository template for Particule's Terraform module.
 
 | Name | Version |
 |------|---------|
+| <a name="requirement_pkcs12"></a> [pkcs12](#requirement\_pkcs12) | ~> 0.0 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.0 |
 | <a name="requirement_tls"></a> [tls](#requirement\_tls) | ~> 3 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
+| <a name="provider_pkcs12"></a> [pkcs12](#provider\_pkcs12) | ~> 0.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | ~> 3.0 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | ~> 3 |
 
 ## Modules
@@ -28,6 +32,8 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [pkcs12_from_pem.certificate](https://registry.terraform.io/providers/chilicat/pkcs12/latest/docs/resources/from_pem) | resource |
+| [random_password.certificate](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [tls_cert_request.certificate](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/cert_request) | resource |
 | [tls_locally_signed_cert.certificate](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/locally_signed_cert) | resource |
 | [tls_private_key.ca](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
