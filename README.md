@@ -1,6 +1,7 @@
-# terraform-module-template
+# terraform-tls-pki
 
-Repository template for Particule's Terraform module.
+This module allows to create a certificate authority and as many certificates as
+needed for client auth or server auth or any other usage.
 
 ## Usage
 
