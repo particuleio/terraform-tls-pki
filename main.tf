@@ -26,7 +26,15 @@ resource "tls_self_signed_cert" "ca" {
   validity_period_hours = lookup(var.ca, "validity_period_hours", 87600)
   early_renewal_hours   = lookup(var.ca, "early_renewal_hours", 78840)
 
-  allowed_uses = lookup(var.ca, "allowed_uses", [])
+  allowed_uses = lookup(var.ca, "allowed_uses", [
+    "cert_signing",
+    "crl_signing",
+    "code_signing",
+    "server_auth",
+    "client_auth",
+    "digital_signature",
+    "key_encipherment",
+  ])
 }
 
 resource "tls_private_key" "certificate" {
