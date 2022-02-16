@@ -2,10 +2,9 @@
 
 resource "tls_private_key" "ca" {
   algorithm   = lookup(var.ca, "algorithm", "ECDSA")
-  ecdsa_curve = lookup(var.ca, "algorithm", "ECDSA") == "ECDSA" ? var.ca.ecdsa_curve : null
-  rsa_bits    = lookup(var.ca, "algorithm", "ECDSA") == "RSA" ? var.ca.rsa_bits : null
+  ecdsa_curve = lookup(var.ca, "algorithm", "ECDSA") == "ECDSA" ? try(var.ca.ecdsa_curve, "P384") : null
+  rsa_bits    = lookup(var.ca, "algorithm", "ECDSA") == "RSA" ? try(var.ca.rsa_bits, 4096) : null
 }
-
 
 resource "tls_self_signed_cert" "ca" {
   key_algorithm     = tls_private_key.ca.algorithm
@@ -27,7 +26,7 @@ resource "tls_self_signed_cert" "ca" {
   validity_period_hours = lookup(var.ca, "validity_period_hours", 87600)
   early_renewal_hours   = lookup(var.ca, "early_renewal_hours", 78840)
 
-  allowed_uses = var.ca.allowed_uses
+  allowed_uses = lookup(var.ca, "allowed_uses", [])
 }
 
 resource "tls_private_key" "certificate" {
