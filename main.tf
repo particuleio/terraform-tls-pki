@@ -12,7 +12,7 @@ resource "tls_self_signed_cert" "ca" {
   is_ca_certificate = true
 
   subject {
-    common_name         = try(var.ca.subject.common_name, null)
+    common_name         = try(var.ca.subject.common_name, "certificate-authority")
     organization        = try(var.ca.subject.organization, null)
     organizational_unit = try(var.ca.subject.organizational_unit, null)
     street_address      = try(var.ca.subject.street_address, null)
