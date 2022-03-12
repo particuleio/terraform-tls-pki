@@ -16,9 +16,9 @@ needed for client auth or server auth or any other usage.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_pkcs12"></a> [pkcs12](#provider\_pkcs12) | 0.0.7 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
-| <a name="provider_tls"></a> [tls](#provider\_tls) | 3.1.0 |
+| <a name="provider_pkcs12"></a> [pkcs12](#provider\_pkcs12) | ~> 0.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | ~> 3.0 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | ~> 3 |
 
 ## Modules
 
