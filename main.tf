@@ -24,7 +24,7 @@ resource "tls_self_signed_cert" "ca" {
   }
 
   validity_period_hours = try(var.ca.validity_period_hours, 87600)
-  early_renewal_hours   = try(var.ca.early_renewal_hours, 78840)
+  early_renewal_hours   = try(var.ca.early_renewal_hours, 2160)
 
   allowed_uses = try(var.ca.allowed_uses, [
     "cert_signing",
@@ -74,7 +74,7 @@ resource "tls_locally_signed_cert" "certificate" {
   ca_cert_pem        = tls_self_signed_cert.ca.cert_pem
 
   validity_period_hours = try(each.value.validity_period_hours, 8740)
-  early_renewal_hours   = try(each.value.early_renewal_hours, 8040)
+  early_renewal_hours   = try(each.value.early_renewal_hours, 720)
 
   allowed_uses = try(each.value.allowed_uses, [])
 }
