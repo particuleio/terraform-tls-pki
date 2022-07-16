@@ -21,5 +21,3 @@ output "certificates" {
   }
   sensitive = true
 }
-
-
