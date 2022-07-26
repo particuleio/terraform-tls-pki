@@ -11,7 +11,7 @@ needed for client auth or server auth or any other usage.
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
 | <a name="requirement_pkcs12"></a> [pkcs12](#requirement\_pkcs12) | ~> 0.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.0 |
-| <a name="requirement_tls"></a> [tls](#requirement\_tls) | ~> 3 |
+| <a name="requirement_tls"></a> [tls](#requirement\_tls) | ~> 4.0 |
 
 ## Providers
 
@@ -19,7 +19,7 @@ needed for client auth or server auth or any other usage.
 |------|---------|
 | <a name="provider_pkcs12"></a> [pkcs12](#provider\_pkcs12) | ~> 0.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | ~> 3.0 |
-| <a name="provider_tls"></a> [tls](#provider\_tls) | ~> 3 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | ~> 4.0 |
 
 ## Modules
 
