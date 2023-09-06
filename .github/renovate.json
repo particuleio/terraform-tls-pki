@@ -15,10 +15,18 @@
     "workarounds:all",
     ":automergeDigest",
     ":automergePatch",
-    ":automergeMinor"
+    ":automergeMinor",
+    ":dependencyDashboard"
   ],
-  "baseBranches": ["main"],
-  "enabledManagers": ["github-actions", "pre-commit", "terraform"],
+  "baseBranches": [
+    "main"
+  ],
+  "enabledManagers": [
+    "github-actions",
+    "pre-commit",
+    "terraform",
+    "terraform-version"
+  ],
   "semanticCommits": "enabled",
   "automergeType": "pr-comment",
   "automergeComment": "renovate:merge",
@@ -27,21 +35,27 @@
   ],
   "prHourlyLimit": 0,
   "packageRules": [
-      {
-        "matchManagers": ["github-actions"],
-        "semanticCommitScope": "ci",
-        "semanticCommitType": "chore"
-      },
-      {
-        "matchManagers": ["pre-commit"],
-        "semanticCommitScope": "ci",
-        "semanticCommitType": "chore"
-      },
-      {
-        "matchManagers": ["terraform"],
-        "semanticCommitScope": "tf",
-        "semanticCommitType": "feat",
-        "automerge": false
-      }
-    ]
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "semanticCommitScope": "ci",
+      "semanticCommitType": "chore"
+    },
+    {
+      "matchManagers": [
+        "pre-commit"
+      ],
+      "semanticCommitScope": "ci",
+      "semanticCommitType": "chore"
+    },
+    {
+      "matchManagers": [
+        "terraform"
+      ],
+      "semanticCommitScope": "tf",
+      "semanticCommitType": "feat",
+      "automerge": false
+    }
+  ]
 }
