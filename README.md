@@ -3,11 +3,11 @@
 This module allows to create a certificate authority and as many certificates as
 needed for client auth or server auth or any other usage.
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
 | <a name="requirement_pkcs12"></a> [pkcs12](#requirement\_pkcs12) | ~> 0.1 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.0 |
@@ -16,7 +16,7 @@ needed for client auth or server auth or any other usage.
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_pkcs12"></a> [pkcs12](#provider\_pkcs12) | ~> 0.1 |
 | <a name="provider_random"></a> [random](#provider\_random) | ~> 3.0 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | ~> 4.0 |
@@ -28,7 +28,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [pkcs12_from_pem.certificate](https://registry.terraform.io/providers/chilicat/pkcs12/latest/docs/resources/from_pem) | resource |
 | [random_password.certificate](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [tls_cert_request.certificate](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/cert_request) | resource |
@@ -40,14 +40,14 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_ca"></a> [ca](#input\_ca) | n/a | `any` | <pre>{<br>  "algorithm": "ECDSA",<br>  "allowed_uses": [<br>    "cert_signing",<br>    "crl_signing",<br>    "code_signing",<br>    "server_auth",<br>    "client_auth",<br>    "digital_signature",<br>    "key_encipherment"<br>  ],<br>  "early_renewal_hours": 78840,<br>  "ecdsa_curve": "P384",<br>  "rsa_bits": 4096,<br>  "subject": {<br>    "common_name": "certificate-authority"<br>  },<br>  "validity_period_hours": 87600<br>}</pre> | no |
+| ---- | ----------- | ---- | ------- | :------: |
+| <a name="input_ca"></a> [ca](#input\_ca) | n/a | `any` | <pre>{<br/>  "algorithm": "ECDSA",<br/>  "allowed_uses": [<br/>    "cert_signing",<br/>    "crl_signing",<br/>    "code_signing",<br/>    "server_auth",<br/>    "client_auth",<br/>    "digital_signature",<br/>    "key_encipherment"<br/>  ],<br/>  "early_renewal_hours": 78840,<br/>  "ecdsa_curve": "P384",<br/>  "rsa_bits": 4096,<br/>  "subject": {<br/>    "common_name": "certificate-authority"<br/>  },<br/>  "validity_period_hours": 87600<br/>}</pre> | no |
 | <a name="input_certificates"></a> [certificates](#input\_certificates) | n/a | `any` | `{}` | no |
 
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_ca"></a> [ca](#output\_ca) | n/a |
 | <a name="output_certificates"></a> [certificates](#output\_certificates) | n/a |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
