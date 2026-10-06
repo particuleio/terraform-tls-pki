@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.108.0
+    rev: v1.109.2
     hooks:
       - id: terraform_fmt
       - id: terraform_validate
@@ -8,12 +8,34 @@ repos:
           - --hook-config=--retry-once-with-cleanup=true
           - --tf-init-args=-upgrade
       - id: terraform_docs
+        args:
+          - --args=--config=.terraform-docs.yml
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-json
       - id: check-merge-conflict
+      - id: check-toml
+      - id: check-yaml
       - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.12
+    hooks:
+      - id: actionlint
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.30.1
+    hooks:
+      - id: zizmor
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 43.272.6
+    rev: 44.138.0
     hooks:
       - id: renovate-config-validator
+  - repo: https://github.com/Mergifyio/mergify-pre-commit
+    rev: 1.1.0
+    hooks:
+      - id: validate-mergify-config
+      - id: validate-mergify-config-location

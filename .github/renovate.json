@@ -1,68 +1,91 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
+    "config:best-practices",
     ":separateMajorReleases",
-    ":ignoreUnstable",
     ":prImmediately",
-    ":updateNotScheduled",
-    ":disableRateLimiting",
-    ":ignoreModulesAndTests",
     ":gitSignOff",
-    "group:monorepos",
-    "group:recommended",
-    "helpers:disableTypesNodeMajor",
-    "workarounds:all",
-    ":automergeDigest",
-    ":automergeMinor",
-    ":dependencyDashboard"
+    "helpers:pinGitHubActionDigests"
   ],
   "baseBranchPatterns": [
     "main"
   ],
   "enabledManagers": [
     "github-actions",
+    "mise",
     "pre-commit",
     "terraform"
   ],
   "semanticCommits": "enabled",
+  "automerge": false,
   "platformAutomerge": false,
+  "rebaseWhen": "behind-base-branch",
+  "prHourlyLimit": 20,
+  "dependencyDashboardLabels": ["dependency-dashboard"],
   "commitMessageExtra": "to {{newVersion}} (was {{currentVersion}})",
-  "prHourlyLimit": 0,
+  "pre-commit": {
+    "enabled": true
+  },
   "packageRules": [
+    {
+      "description": "Label major updates",
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["update-major", "breaking-change"]
+    },
+    {
+      "description": "Label minor updates",
+      "matchUpdateTypes": ["minor"],
+      "addLabels": ["update-minor"]
+    },
+    {
+      "description": "Label patch updates",
+      "matchUpdateTypes": ["patch"],
+      "addLabels": ["update-patch"]
+    },
+    {
+      "description": "Label digest pinning and digest refreshes",
+      "matchUpdateTypes": ["digest", "pinDigest"],
+      "addLabels": ["update-digest"]
+    },
     {
       "matchManagers": [
         "github-actions"
       ],
+      "pinDigests": true,
       "semanticCommitScope": "ci",
       "semanticCommitType": "chore"
     },
     {
-      "matchManagers": [
-        "pre-commit"
-      ],
-      "semanticCommitScope": "ci",
-      "semanticCommitType": "chore"
-    },
-    {
+      "description": "Only low-risk automation updates are eligible for Mergify automerge",
       "matchManagers": [
         "github-actions",
+        "mise",
         "pre-commit"
       ],
       "matchUpdateTypes": [
         "minor",
         "patch",
-        "digest"
+        "digest",
+        "pinDigest"
       ],
       "addLabels": [
-        "automerge"
+        "automerge-candidate"
       ]
+    },
+    {
+      "matchManagers": [
+        "mise",
+        "pre-commit"
+      ],
+      "semanticCommitScope": "ci",
+      "semanticCommitType": "chore"
     },
     {
       "matchManagers": [
         "terraform"
       ],
       "semanticCommitScope": "tf",
-      "semanticCommitType": "feat",
-      "automerge": false
+      "semanticCommitType": "feat"
     }
   ]
 }

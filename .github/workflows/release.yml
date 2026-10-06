@@ -3,23 +3,36 @@ name: Release
 on:
   push:
     branches:
-    - release
+      - release
+
+permissions: {}
+
+concurrency:
+  group: release
+  cancel-in-progress: false
 
 jobs:
   terraform-release:
-    if: github.ref == 'refs/heads/release'
-    name: 'terraform:release'
+    name: "terraform:release"
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     steps:
-    - name: Checkout
-      uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
 
-    - name: Semantic Release
-      uses: cycjimmy/semantic-release-action@v4
-      with:
-        branches: |
-          [
-            'release'
-          ]
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@b12c8f6015dc215fe37bc154d4ad456dd3833c90 # v6.0.0
+        with:
+          branches: |
+            [
+              'release'
+            ]
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
