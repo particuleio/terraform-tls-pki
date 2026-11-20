@@ -21,7 +21,9 @@
   "platformAutomerge": false,
   "rebaseWhen": "behind-base-branch",
   "prHourlyLimit": 20,
-  "dependencyDashboardLabels": ["dependency-dashboard"],
+  "dependencyDashboard": {
+    "labels": ["dependency-dashboard"]
+  },
   "commitMessageExtra": "to {{newVersion}} (was {{currentVersion}})",
   "pre-commit": {
     "enabled": true
