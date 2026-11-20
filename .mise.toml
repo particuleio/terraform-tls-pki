@@ -1,6 +1,6 @@
 [tools]
 actionlint = "1.7.12"
 pre-commit = "4.7.0"
-terraform = "1.17.1"
+terraform = "1.17.2"
 terraform-docs = "0.25.1"
 zizmor = "1.32.0"
